@@ -788,10 +788,11 @@
                 font-size: 0.7rem;
             }
 
-            /* Logos: smaller */
+            /* Logos: smaller and LEFT ALIGNED on mobile */
             .logo-container {
                 flex-direction: row;
                 gap: var(--space-md);
+                justify-content: flex-start;
             }
 
             .logo-img {
@@ -801,6 +802,11 @@
             .logo-divider {
                 width: 1px;
                 height: 30px;
+            }
+
+            /* Title slide: left align content on mobile */
+            .slide--title .slide-content {
+                text-align: left;
             }
 
             /* Footer: compact */
@@ -825,13 +831,19 @@
                 font-size: 0.7rem;
             }
 
-            /* CTA buttons: full width on mobile */
+            /* CTA buttons: stack vertically, full width on mobile */
+            .cta-buttons {
+                flex-direction: column;
+                gap: var(--space-md) !important;
+                margin-top: var(--space-lg) !important;
+            }
+
             .cta-button--cyan,
             .cta-button--orange {
                 width: 100%;
                 justify-content: center;
-                padding: var(--space-md) var(--space-lg) !important;
-                font-size: 0.85rem;
+                padding: var(--space-sm) var(--space-md) !important;
+                font-size: 0.8rem;
             }
 
             /* Big numbers: scaled */
@@ -842,6 +854,18 @@
             /* Specific slide adjustments */
             .slide--title .slide-content {
                 justify-content: center;
+            }
+
+            /* Last slide (Next Steps): more compact on mobile */
+            .slide--title .icon-circle--dark {
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 0.7rem;
+            }
+
+            .slide--title h2 {
+                font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+                margin-bottom: var(--space-md);
             }
 
             /* Investment summary row */
@@ -1204,7 +1228,7 @@
                 <p style="opacity: 0.8;">CEO, Poppy Marketing & Consulting</p>
                 <p style="margin-top: var(--space-lg); opacity: 0.6; font-size: var(--fs-sm);">ricardo@poppymarketingandconsulting.com | (941) 777-4933</p>
             </div>
-            <div class="reveal" style="margin-top: var(--space-2xl); display: flex; gap: var(--space-lg); justify-content: center; flex-wrap: wrap;">
+            <div class="reveal cta-buttons" style="margin-top: var(--space-2xl); display: flex; gap: var(--space-lg); justify-content: center; flex-wrap: wrap;">
                 <a href="mailto:ricardo@poppymarketingandconsulting.com?subject=Dog%20BnB%20Houston%20Partnership%20-%20Approved&body=Hi%20Ricardo%2C%0A%0AI%E2%80%99ve%20reviewed%20the%20proposal%20and%20I%E2%80%99m%20ready%20to%20move%20forward%20with%20the%20Dog%20BnB%20Houston%20partnership.%0A%0ALooking%20forward%20to%20getting%20started!%0A%0ABest%2C%0AJames" class="cta-button cta-button--cyan" style="display: inline-flex; align-items: center; gap: var(--space-sm); padding: var(--space-md) var(--space-xl); background: var(--accent-cyan); color: var(--bg-dark); font-weight: 600; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;">
                     <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
                     Approve This Deal
