@@ -613,55 +613,240 @@
                 --duration-normal: 0.35s;
                 --duration-micro: 0.2s;
                 --reveal-distance: 12px;
-                --card-padding: 1rem;
-                --icon-size: 40px;
+                --card-padding: 0.75rem;
+                --icon-size: 32px;
+                --space-xs: 0.15rem;
+                --space-sm: 0.35rem;
+                --space-md: 0.5rem;
+                --space-lg: 0.75rem;
+                --space-xl: 1rem;
+                --space-2xl: 1.25rem;
+                --space-3xl: 1.5rem;
+                --card-radius: 8px;
             }
 
             .nav-dots {
                 display: none;
             }
 
+            /* Slide container: fit viewport with internal scroll fallback */
             .slide {
-                padding: var(--space-xl) var(--space-lg);
+                height: 100dvh;
+                height: 100svh; /* fallback */
+                min-height: auto;
+                padding: 20px 16px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
             }
 
+            .slide-content {
+                flex: 1;
+                overflow: auto;
+                -webkit-overflow-scrolling: touch;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* Typography: scaled down for mobile */
+            h1 {
+                font-size: clamp(1.4rem, 5vw, 2rem);
+                line-height: 1.1;
+                margin-bottom: var(--space-md);
+            }
+
+            h2 {
+                font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+                line-height: 1.15;
+                margin-bottom: var(--space-lg);
+            }
+
+            h3 {
+                font-size: clamp(0.95rem, 3vw, 1.1rem);
+                line-height: 1.2;
+                margin-bottom: var(--space-sm);
+            }
+
+            h4 {
+                font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+                line-height: 1.25;
+            }
+
+            p, li {
+                font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+                line-height: 1.35;
+            }
+
+            .subtitle {
+                font-size: clamp(0.85rem, 2.5vw, 1rem);
+            }
+
+            .eyebrow {
+                font-size: 0.65rem;
+                margin-bottom: var(--space-sm);
+            }
+
+            /* Grid layouts: single column, tighter gaps */
             .two-col,
             .three-col,
             .four-col {
                 grid-template-columns: 1fr;
-                gap: var(--space-xl);
-            }
-
-            .slide-footer {
-                flex-direction: column;
-                gap: var(--space-xs);
-                text-align: center;
-            }
-
-            .logo-container {
-                flex-direction: column;
                 gap: var(--space-md);
             }
 
-            .logo-divider {
-                width: 40px;
-                height: 2px;
+            /* Cards: more compact */
+            .card {
+                padding: var(--card-padding);
+                margin-bottom: var(--space-sm);
+            }
+
+            .card h3 {
+                font-size: 0.9rem;
+            }
+
+            .card h4 {
+                font-size: 0.85rem;
+                margin-bottom: var(--space-xs);
+            }
+
+            .card p {
+                font-size: 0.75rem;
+            }
+
+            /* Feature lists: compact */
+            .feature-list {
+                gap: var(--space-sm);
+            }
+
+            .feature-list li {
+                font-size: 0.75rem;
+                gap: var(--space-sm);
+            }
+
+            .feature-list li i {
+                width: 12px;
+                height: 12px;
+            }
+
+            /* Icon circles: smaller */
+            .icon-circle {
+                width: 32px;
+                height: 32px;
+            }
+
+            .icon-circle i {
+                width: 16px !important;
+                height: 16px !important;
+            }
+
+            /* Phase badges: compact */
+            .phase-badge {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.6rem;
+                margin-bottom: var(--space-md);
+            }
+
+            /* Timeline: compact */
+            .timeline {
+                gap: var(--space-md);
             }
 
             .timeline-item {
-                flex-direction: column;
+                flex-direction: row;
+                gap: var(--space-md);
+                align-items: flex-start;
+            }
+
+            .timeline-marker {
+                width: 36px;
+                height: 36px;
+                font-size: 0.75rem;
+                flex-shrink: 0;
+            }
+
+            .timeline-content h4 {
+                font-size: 0.85rem;
+                margin-bottom: 2px;
+            }
+
+            .timeline-content p {
+                font-size: 0.7rem;
+            }
+
+            /* FAQ items: compact */
+            .faq-item {
+                padding: var(--space-md);
+                margin-bottom: var(--space-sm);
+            }
+
+            .faq-item h4 {
+                font-size: 0.8rem;
+                margin-bottom: 2px;
+            }
+
+            .faq-item p {
+                font-size: 0.7rem;
+            }
+
+            /* Logos: smaller */
+            .logo-container {
+                flex-direction: row;
                 gap: var(--space-md);
             }
 
-            .bg-blob {
-                width: 250px;
-                height: 250px;
+            .logo-img {
+                height: 35px !important;
             }
 
+            .logo-divider {
+                width: 1px;
+                height: 30px;
+            }
+
+            /* Footer: compact */
+            .slide-footer {
+                flex-direction: row;
+                justify-content: space-between;
+                gap: var(--space-sm);
+                font-size: 0.6rem;
+                padding-top: var(--space-sm);
+                margin-top: auto;
+            }
+
+            /* Hide decorative blobs on mobile */
+            .bg-blob {
+                display: none;
+            }
+
+            /* Tables: compact */
             .comparison-table th,
             .comparison-table td {
-                padding: var(--space-md);
-                font-size: var(--fs-sm);
+                padding: var(--space-sm);
+                font-size: 0.7rem;
+            }
+
+            /* CTA buttons: full width on mobile */
+            .cta-button--cyan,
+            .cta-button--orange {
+                width: 100%;
+                justify-content: center;
+                padding: var(--space-md) var(--space-lg) !important;
+                font-size: 0.85rem;
+            }
+
+            /* Big numbers: scaled */
+            .big-number {
+                font-size: 2rem;
+            }
+
+            /* Specific slide adjustments */
+            .slide--title .slide-content {
+                justify-content: center;
+            }
+
+            /* Investment summary row */
+            .four-col {
+                gap: var(--space-sm);
             }
         }
 
@@ -675,11 +860,52 @@
             }
 
             .slide {
-                padding: var(--space-lg);
+                padding: 16px 12px;
+            }
+
+            h1 {
+                font-size: clamp(1.2rem, 5vw, 1.6rem);
+            }
+
+            h2 {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+            }
+
+            h3 {
+                font-size: clamp(0.85rem, 3vw, 1rem);
+            }
+
+            p, li {
+                font-size: 0.75rem;
+                line-height: 1.3;
+            }
+
+            .card {
+                padding: 0.6rem;
+            }
+
+            .feature-list li {
+                font-size: 0.7rem;
+            }
+
+            .timeline-marker {
+                width: 30px;
+                height: 30px;
+                font-size: 0.65rem;
+            }
+
+            .logo-img {
+                height: 28px !important;
             }
 
             .big-number {
-                font-size: 2.5rem;
+                font-size: 1.75rem;
+            }
+
+            .cta-button--cyan,
+            .cta-button--orange {
+                font-size: 0.8rem;
+                padding: var(--space-sm) var(--space-md) !important;
             }
         }
     </style>
