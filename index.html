@@ -607,32 +607,38 @@
 
         /* =============================================================================
            MOBILE OVERRIDES: MOBILE (max-width: 768px)
+           Comprehensive mobile-first styles with clear type scale and spacing
            ============================================================================= */
         @media (max-width: 768px) {
+            /* -------------------------------------------------------------------
+               MOBILE SPACING SYSTEM: 8 / 12 / 16 / 20
+               ------------------------------------------------------------------- */
             :root {
+                --space-xs: 4px;
+                --space-sm: 8px;
+                --space-md: 12px;
+                --space-lg: 16px;
+                --space-xl: 20px;
+                --space-2xl: 24px;
+                --space-3xl: 32px;
+
+                /* Animation tokens */
                 --duration-normal: 0.35s;
                 --duration-micro: 0.2s;
                 --reveal-distance: 12px;
-                --card-padding: 0.75rem;
+
+                /* Component sizing */
+                --card-padding: 12px;
+                --card-radius: 10px;
                 --icon-size: 32px;
-                --space-xs: 0.15rem;
-                --space-sm: 0.35rem;
-                --space-md: 0.5rem;
-                --space-lg: 0.75rem;
-                --space-xl: 1rem;
-                --space-2xl: 1.25rem;
-                --space-3xl: 1.5rem;
-                --card-radius: 8px;
             }
 
-            .nav-dots {
-                display: none;
-            }
-
-            /* Slide container: fit viewport with internal scroll fallback */
+            /* -------------------------------------------------------------------
+               SLIDE CONTAINER: 100dvh with internal scroll fallback
+               ------------------------------------------------------------------- */
             .slide {
-                height: 100dvh;
                 height: 100svh; /* fallback */
+                height: 100dvh;
                 min-height: auto;
                 padding: 20px 16px;
                 overflow: hidden;
@@ -648,45 +654,66 @@
                 flex-direction: column;
             }
 
-            /* Typography: scaled down for mobile */
+            /* Hide nav dots on mobile */
+            .nav-dots {
+                display: none;
+            }
+
+            /* -------------------------------------------------------------------
+               TYPOGRAPHY SCALE: Clear hierarchy
+               H1: 22-30px | H2: 18-24px | H3: 16-20px | body: 14-16px | caption: 12-13px
+               ------------------------------------------------------------------- */
             h1 {
-                font-size: clamp(1.4rem, 5vw, 2rem);
+                font-size: clamp(22px, 5vw, 30px);
                 line-height: 1.1;
                 margin-bottom: var(--space-md);
             }
 
             h2 {
-                font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+                font-size: clamp(18px, 4vw, 24px);
                 line-height: 1.15;
                 margin-bottom: var(--space-lg);
             }
 
             h3 {
-                font-size: clamp(0.95rem, 3vw, 1.1rem);
+                font-size: clamp(16px, 3.6vw, 20px);
                 line-height: 1.2;
                 margin-bottom: var(--space-sm);
             }
 
             h4 {
-                font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+                font-size: clamp(14px, 3.2vw, 17px);
                 line-height: 1.25;
+                margin-bottom: var(--space-xs);
             }
 
             p, li {
-                font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-                line-height: 1.35;
+                font-size: clamp(14px, 3.4vw, 16px);
+                line-height: 1.45;
             }
 
             .subtitle {
-                font-size: clamp(0.85rem, 2.5vw, 1rem);
+                font-size: clamp(14px, 3.4vw, 16px);
+                line-height: 1.4;
             }
 
             .eyebrow {
-                font-size: 0.65rem;
+                font-size: clamp(10px, 2.5vw, 12px);
+                letter-spacing: 0.08em;
                 margin-bottom: var(--space-sm);
             }
 
-            /* Grid layouts: single column, tighter gaps */
+            /* Caption / small text */
+            .slide-footer,
+            .price-label,
+            [style*="fs-xs"],
+            [style*="fs-sm"] {
+                font-size: clamp(12px, 3vw, 13px) !important;
+            }
+
+            /* -------------------------------------------------------------------
+               GRID LAYOUTS: Single column with consistent gaps
+               ------------------------------------------------------------------- */
             .two-col,
             .three-col,
             .four-col {
@@ -694,59 +721,90 @@
                 gap: var(--space-md);
             }
 
-            /* Cards: more compact */
+            /* -------------------------------------------------------------------
+               CARDS: Consistent padding and spacing
+               ------------------------------------------------------------------- */
             .card {
                 padding: var(--card-padding);
                 margin-bottom: var(--space-sm);
+                border-radius: var(--card-radius);
             }
 
             .card h3 {
-                font-size: 0.9rem;
+                font-size: clamp(15px, 3.5vw, 18px);
+                margin-bottom: var(--space-xs);
             }
 
             .card h4 {
-                font-size: 0.85rem;
+                font-size: clamp(14px, 3.2vw, 16px);
                 margin-bottom: var(--space-xs);
             }
 
             .card p {
-                font-size: 0.75rem;
+                font-size: clamp(13px, 3vw, 14px);
+                line-height: 1.4;
             }
 
-            /* Feature lists: compact */
+            /* Inline styles in cards - override specific sizes */
+            .card [style*="fs-2xl"],
+            .card [style*="font-size: var(--fs-2xl)"] {
+                font-size: clamp(18px, 4vw, 22px) !important;
+            }
+
+            .card [style*="fs-xl"],
+            .card [style*="font-size: var(--fs-xl)"] {
+                font-size: clamp(16px, 3.5vw, 18px) !important;
+            }
+
+            .card [style*="fs-lg"],
+            .card [style*="font-size: var(--fs-lg)"] {
+                font-size: clamp(15px, 3.3vw, 17px) !important;
+            }
+
+            /* -------------------------------------------------------------------
+               FEATURE LISTS: Clean and readable
+               ------------------------------------------------------------------- */
             .feature-list {
                 gap: var(--space-sm);
             }
 
             .feature-list li {
-                font-size: 0.75rem;
+                font-size: clamp(13px, 3vw, 14px);
                 gap: var(--space-sm);
+                line-height: 1.4;
             }
 
             .feature-list li i {
-                width: 12px;
-                height: 12px;
+                width: 14px;
+                height: 14px;
+                flex-shrink: 0;
             }
 
-            /* Icon circles: smaller */
+            /* -------------------------------------------------------------------
+               ICON CIRCLES: Proportional sizing
+               ------------------------------------------------------------------- */
             .icon-circle {
-                width: 32px;
-                height: 32px;
+                width: 36px;
+                height: 36px;
             }
 
             .icon-circle i {
-                width: 16px !important;
-                height: 16px !important;
+                width: 18px !important;
+                height: 18px !important;
             }
 
-            /* Phase badges: compact */
+            /* -------------------------------------------------------------------
+               PHASE BADGES: Compact but readable
+               ------------------------------------------------------------------- */
             .phase-badge {
-                padding: 0.3rem 0.6rem;
-                font-size: 0.6rem;
+                padding: 6px 12px;
+                font-size: clamp(10px, 2.5vw, 12px);
                 margin-bottom: var(--space-md);
             }
 
-            /* Timeline: compact */
+            /* -------------------------------------------------------------------
+               TIMELINE: Horizontal layout, compact
+               ------------------------------------------------------------------- */
             .timeline {
                 gap: var(--space-md);
             }
@@ -760,35 +818,42 @@
             .timeline-marker {
                 width: 36px;
                 height: 36px;
-                font-size: 0.75rem;
+                font-size: clamp(12px, 3vw, 14px);
                 flex-shrink: 0;
             }
 
             .timeline-content h4 {
-                font-size: 0.85rem;
-                margin-bottom: 2px;
+                font-size: clamp(14px, 3.2vw, 16px);
+                margin-bottom: 4px;
             }
 
             .timeline-content p {
-                font-size: 0.7rem;
+                font-size: clamp(12px, 2.8vw, 14px);
+                line-height: 1.4;
             }
 
-            /* FAQ items: compact */
+            /* -------------------------------------------------------------------
+               FAQ ITEMS: Readable with breathing room
+               ------------------------------------------------------------------- */
             .faq-item {
                 padding: var(--space-md);
                 margin-bottom: var(--space-sm);
+                border-radius: var(--card-radius);
             }
 
             .faq-item h4 {
-                font-size: 0.8rem;
-                margin-bottom: 2px;
+                font-size: clamp(14px, 3.2vw, 16px);
+                margin-bottom: 4px;
             }
 
             .faq-item p {
-                font-size: 0.7rem;
+                font-size: clamp(12px, 2.8vw, 14px);
+                line-height: 1.4;
             }
 
-            /* Logos: smaller and LEFT ALIGNED on mobile */
+            /* -------------------------------------------------------------------
+               LOGOS: Left-aligned, proper sizing
+               ------------------------------------------------------------------- */
             .logo-container {
                 flex-direction: row;
                 gap: var(--space-md);
@@ -796,45 +861,62 @@
             }
 
             .logo-img {
-                height: 35px !important;
+                height: 36px !important;
+                max-height: 22vh;
+                object-fit: contain;
             }
 
             .logo-divider {
                 width: 1px;
-                height: 30px;
+                height: 28px;
             }
 
-            /* Title slide: left align content on mobile */
-            .slide--title .slide-content {
-                text-align: left;
-            }
-
-            /* Footer: compact */
+            /* -------------------------------------------------------------------
+               SLIDE FOOTER: Compact, centered
+               ------------------------------------------------------------------- */
             .slide-footer {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                right: auto;
                 flex-direction: row;
                 justify-content: space-between;
                 gap: var(--space-sm);
-                font-size: 0.6rem;
+                font-size: clamp(10px, 2.5vw, 12px);
                 padding-top: var(--space-sm);
                 margin-top: auto;
+                flex-shrink: 0;
             }
 
-            /* Hide decorative blobs on mobile */
+            /* -------------------------------------------------------------------
+               DECORATIVE ELEMENTS: Hidden on mobile
+               ------------------------------------------------------------------- */
             .bg-blob {
                 display: none;
             }
 
-            /* Tables: compact */
+            /* -------------------------------------------------------------------
+               TABLES: Compact with readable text
+               ------------------------------------------------------------------- */
             .comparison-table th,
             .comparison-table td {
                 padding: var(--space-sm);
-                font-size: 0.7rem;
+                font-size: clamp(12px, 2.8vw, 14px);
             }
 
-            /* CTA buttons: stack vertically, full width on mobile */
+            /* -------------------------------------------------------------------
+               BIG NUMBERS: Scaled for mobile
+               ------------------------------------------------------------------- */
+            .big-number {
+                font-size: clamp(32px, 8vw, 48px);
+            }
+
+            /* -------------------------------------------------------------------
+               CTA BUTTONS: Stack vertically, full width
+               ------------------------------------------------------------------- */
             .cta-buttons {
                 flex-direction: column;
-                gap: var(--space-md) !important;
+                gap: var(--space-sm) !important;
                 margin-top: var(--space-lg) !important;
             }
 
@@ -843,39 +925,71 @@
                 width: 100%;
                 justify-content: center;
                 padding: var(--space-sm) var(--space-md) !important;
-                font-size: 0.8rem;
+                font-size: clamp(13px, 3vw, 15px);
+                border-radius: 8px;
             }
 
-            /* Big numbers: scaled */
-            .big-number {
-                font-size: 2rem;
+            .cta-button--cyan i,
+            .cta-button--orange i {
+                width: 16px !important;
+                height: 16px !important;
             }
 
-            /* Specific slide adjustments */
+            /* -------------------------------------------------------------------
+               TITLE SLIDE ADJUSTMENTS
+               ------------------------------------------------------------------- */
             .slide--title .slide-content {
+                text-align: left;
                 justify-content: center;
             }
 
-            /* Last slide (Next Steps): more compact on mobile */
-            .slide--title .icon-circle--dark {
-                width: 28px !important;
-                height: 28px !important;
-                font-size: 0.7rem;
+            .slide--title h1 {
+                font-size: clamp(24px, 5.5vw, 32px);
             }
 
             .slide--title h2 {
-                font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
-                margin-bottom: var(--space-md);
+                font-size: clamp(20px, 4.5vw, 26px);
             }
 
-            /* Investment summary row */
-            .four-col {
-                gap: var(--space-sm);
+            /* Next Steps icons: compact */
+            .slide--title .icon-circle--dark {
+                width: 28px !important;
+                height: 28px !important;
+            }
+
+            .slide--title .icon-circle--dark span {
+                font-size: clamp(12px, 3vw, 14px);
+            }
+
+            /* -------------------------------------------------------------------
+               INLINE STYLE OVERRIDES: Ensure consistency
+               ------------------------------------------------------------------- */
+            [style*="margin-bottom: var(--space-2xl)"] {
+                margin-bottom: var(--space-lg) !important;
+            }
+
+            [style*="margin-top: var(--space-2xl)"] {
+                margin-top: var(--space-lg) !important;
+            }
+
+            [style*="margin-top: var(--space-3xl)"] {
+                margin-top: var(--space-xl) !important;
+            }
+
+            [style*="gap: var(--space-xl)"] {
+                gap: var(--space-md) !important;
+            }
+
+            /* Images: prevent oversized images */
+            img:not(.logo-img) {
+                max-height: 22vh;
+                object-fit: contain;
             }
         }
 
         /* =============================================================================
            MOBILE OVERRIDES: SMALL PHONES (max-width: 480px)
+           Further tightening for narrow screens
            ============================================================================= */
         @media (max-width: 480px) {
             :root {
@@ -884,42 +998,63 @@
             }
 
             .slide {
-                padding: 16px 12px;
+                padding: 16px 14px;
             }
 
             h1 {
-                font-size: clamp(1.2rem, 5vw, 1.6rem);
+                font-size: clamp(20px, 5vw, 26px);
             }
 
             h2 {
-                font-size: clamp(1rem, 4vw, 1.3rem);
+                font-size: clamp(17px, 4vw, 22px);
             }
 
             h3 {
-                font-size: clamp(0.85rem, 3vw, 1rem);
+                font-size: clamp(15px, 3.5vw, 18px);
+            }
+
+            h4 {
+                font-size: clamp(13px, 3vw, 15px);
             }
 
             p, li {
-                font-size: 0.75rem;
-                line-height: 1.3;
+                font-size: clamp(13px, 3.2vw, 15px);
+                line-height: 1.4;
             }
 
             .card {
-                padding: 0.6rem;
+                padding: 10px;
+            }
+
+            .card p {
+                font-size: clamp(12px, 2.8vw, 13px);
             }
 
             .feature-list li {
-                font-size: 0.7rem;
+                font-size: clamp(12px, 2.8vw, 13px);
             }
 
             .timeline-marker {
-                width: 30px;
-                height: 30px;
-                font-size: 0.65rem;
+                width: 32px;
+                height: 32px;
+            }
+
+            .icon-circle {
+                width: 32px;
+                height: 32px;
             }
 
             .logo-img {
-                height: 28px !important;
+                height: 30px !important;
+            }
+
+            .big-number {
+                font-size: clamp(28px, 7vw, 40px);
+            }
+
+            .slide--title .icon-circle--dark {
+                width: 26px !important;
+                height: 26px !important;
             }
 
             .big-number {
@@ -1233,7 +1368,7 @@
                     <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
                     Approve This Deal
                 </a>
-                <a href="https://www.poppymarketingandconsulting.com/booking-calendar/free-strategy-session" target="_blank" class="cta-button cta-button--orange" style="display: inline-flex; align-items: center; gap: var(--space-sm); padding: var(--space-md) var(--space-xl); background: var(--accent-orange); color: var(--bg-dark); font-weight: 600; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;">
+                <a href="https://www.poppymarketingandconsulting.com/booking-calendar/free-strategy-session" target="_blank" class="cta-button cta-button--orange" style="display: inline-flex; align-items: center; gap: var(--space-sm); padding: var(--space-md) var(--space-xl); background: var(--primary-orange); color: var(--bg-dark); font-weight: 600; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;">
                     <i data-lucide="calendar" style="width: 20px; height: 20px;"></i>
                     Book Strategy Session
                 </a>
