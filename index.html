@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog BnB Houston x Poppy Marketing | Partnership Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* =============================================================================
+           CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+           Dog BnB Houston Brand: Friendly, Professional, Clear
+           ============================================================================= */
+        :root {
+            /* Brand Colors - Dog BnB Houston */
+            --accent-cyan: #45c7ef;
+            --primary-orange: #f8a520;
+            --bg-cream: #fef9f0;
+            --text-dark: #000000;
+            --text-muted: #5a5a5a;
+            --white: #ffffff;
+
+            /* Derived Colors */
+            --accent-cyan-light: rgba(69, 199, 239, 0.15);
+            --accent-cyan-dark: #2ba8d0;
+            --primary-orange-light: rgba(248, 165, 32, 0.15);
+            --primary-orange-dark: #e09010;
+            --bg-dark: #1a1a2e;
+
+            /* Typography */
+            --font-display: 'Nunito', sans-serif;
+            --font-body: 'Source Sans 3', sans-serif;
+
+            /* Typography Scale */
+            --fs-xs: 0.75rem;
+            --fs-sm: 0.875rem;
+            --fs-base: 1rem;
+            --fs-lg: 1.125rem;
+            --fs-xl: 1.25rem;
+            --fs-2xl: 1.5rem;
+
+            /* Spacing Scale */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 0.75rem;
+            --space-lg: 1rem;
+            --space-xl: 1.5rem;
+            --space-2xl: 2rem;
+            --space-3xl: 3rem;
+
+            /* Slide Layout */
+            --slide-padding: clamp(2rem, 5vw, 4rem);
+            --content-max-width: 1000px;
+
+            /* Animation Tokens */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-micro: 0.3s;
+            --duration-normal: 0.6s;
+            --reveal-distance: 20px;
+
+            /* Component Sizing */
+            --card-radius: 16px;
+            --card-padding: 1.5rem;
+            --icon-size: 48px;
+        }
+
+        /* =============================================================================
+           RESET & BASE STYLES
+           ============================================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* =============================================================================
+           NAVIGATION & PROGRESS
+           ============================================================================= */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--primary-orange));
+            width: 0%;
+            z-index: 1000;
+            transition: width var(--duration-micro) ease;
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: all var(--duration-micro) ease;
+            border: none;
+        }
+
+        .nav-dot:hover {
+            opacity: 0.6;
+            transform: scale(1.2);
+        }
+
+        .nav-dot.active {
+            opacity: 1;
+            background: var(--accent-cyan);
+        }
+
+        /* =============================================================================
+           SLIDE LAYOUTS
+           ============================================================================= */
+        .slide {
+            min-height: 100vh;
+            padding: var(--slide-padding);
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            max-width: var(--content-max-width);
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .slide-footer {
+            position: absolute;
+            bottom: var(--space-lg);
+            left: var(--slide-padding);
+            right: var(--slide-padding);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: var(--fs-xs);
+            color: var(--text-muted);
+        }
+
+        /* Slide Variants */
+        .slide--title {
+            background: var(--bg-dark);
+            color: var(--white);
+        }
+
+        .slide--title .slide-footer {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .slide--cream {
+            background: var(--bg-cream);
+        }
+
+        .slide--white {
+            background: var(--white);
+        }
+
+        .slide--accent {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-cyan-dark));
+            color: var(--white);
+        }
+
+        .slide--accent .slide-footer {
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* =============================================================================
+           TYPOGRAPHY
+           ============================================================================= */
+        .eyebrow {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: var(--fs-sm);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            margin-bottom: var(--space-md);
+        }
+
+        .slide--title .eyebrow,
+        .slide--accent .eyebrow {
+            color: var(--primary-orange);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: var(--space-lg);
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: var(--space-xl);
+        }
+
+        h2 .accent {
+            color: var(--accent-cyan);
+        }
+
+        h2 .accent-orange {
+            color: var(--primary-orange);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            margin-bottom: var(--space-md);
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.85;
+            max-width: 600px;
+        }
+
+        /* =============================================================================
+           GRID LAYOUTS
+           ============================================================================= */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: start;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+        }
+
+        .four-col {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+        }
+
+        /* =============================================================================
+           CARDS & COMPONENTS
+           ============================================================================= */
+        .card {
+            background: var(--white);
+            border-radius: var(--card-radius);
+            padding: var(--card-padding);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .card--cyan {
+            background: var(--accent-cyan-light);
+            border: 2px solid var(--accent-cyan);
+        }
+
+        .card--orange {
+            background: var(--primary-orange-light);
+            border: 2px solid var(--primary-orange);
+        }
+
+        .card--dark {
+            background: var(--bg-dark);
+            color: var(--white);
+        }
+
+        .card h3 {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .card h4 {
+            font-size: var(--fs-lg);
+            margin-bottom: var(--space-sm);
+        }
+
+        .icon-circle {
+            width: var(--icon-size);
+            height: var(--icon-size);
+            border-radius: 50%;
+            background: var(--accent-cyan-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .icon-circle--orange {
+            background: var(--primary-orange-light);
+            color: var(--primary-orange);
+        }
+
+        .icon-circle--dark {
+            background: rgba(255,255,255,0.1);
+            color: var(--accent-cyan);
+        }
+
+        /* Phase Badge */
+        .phase-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 0.5rem 1rem;
+            background: var(--accent-cyan);
+            color: var(--white);
+            border-radius: 100px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: var(--fs-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .phase-badge--orange {
+            background: var(--primary-orange);
+        }
+
+        /* =============================================================================
+           LISTS
+           ============================================================================= */
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            font-size: var(--fs-base);
+        }
+
+        .feature-list li i {
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+            margin-top: 0.15rem;
+        }
+
+        .check-list li i {
+            color: #22c55e;
+        }
+
+        /* =============================================================================
+           PRICING & NUMBERS
+           ============================================================================= */
+        .big-number {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            color: var(--accent-cyan);
+            line-height: 1;
+        }
+
+        .big-number--orange {
+            color: var(--primary-orange);
+        }
+
+        .price-tag {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .price-label {
+            font-size: var(--fs-sm);
+            color: var(--text-muted);
+        }
+
+        /* =============================================================================
+           TIMELINE / PHASES
+           ============================================================================= */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: var(--space-xl);
+            align-items: flex-start;
+        }
+
+        .timeline-marker {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: var(--fs-lg);
+            flex-shrink: 0;
+        }
+
+        .timeline-marker--orange {
+            background: var(--primary-orange);
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content h4 {
+            font-size: var(--fs-xl);
+            margin-bottom: var(--space-xs);
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: var(--fs-sm);
+        }
+
+        /* =============================================================================
+           COMPARISON TABLE
+           ============================================================================= */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: var(--space-lg);
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .comparison-table th {
+            font-family: var(--font-display);
+            font-weight: 600;
+            background: var(--accent-cyan-light);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* =============================================================================
+           FAQ ACCORDION
+           ============================================================================= */
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--card-radius);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .faq-item h4 {
+            font-size: var(--fs-base);
+            color: var(--accent-cyan);
+            margin-bottom: var(--space-sm);
+        }
+
+        .faq-item p {
+            font-size: var(--fs-sm);
+            color: var(--text-muted);
+        }
+
+        /* =============================================================================
+           LOGO DISPLAYS
+           ============================================================================= */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-divider {
+            width: 2px;
+            height: 40px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* =============================================================================
+           DECORATIVE ELEMENTS
+           ============================================================================= */
+        .bg-blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .bg-blob--cyan {
+            background: var(--accent-cyan);
+        }
+
+        .bg-blob--orange {
+            background: var(--primary-orange);
+        }
+
+        /* =============================================================================
+           ANIMATIONS & REVEALS
+           ============================================================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(var(--reveal-distance));
+            transition:
+                opacity var(--duration-normal) var(--ease-out-expo),
+                transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide.visible .reveal:nth-child(1) { transition-delay: 0.05s; }
+        .slide.visible .reveal:nth-child(2) { transition-delay: 0.1s; }
+        .slide.visible .reveal:nth-child(3) { transition-delay: 0.15s; }
+        .slide.visible .reveal:nth-child(4) { transition-delay: 0.2s; }
+        .slide.visible .reveal:nth-child(5) { transition-delay: 0.25s; }
+        .slide.visible .reveal:nth-child(6) { transition-delay: 0.3s; }
+
+        .counter {
+            display: inline-block;
+        }
+
+        /* =============================================================================
+           ACCESSIBILITY: REDUCED MOTION
+           ============================================================================= */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                transition: opacity var(--duration-micro) ease;
+                transform: none;
+            }
+
+            .nav-dot,
+            .progress-bar {
+                transition: none;
+            }
+        }
+
+        /* =============================================================================
+           MOBILE OVERRIDES: TABLET (max-width: 1023px)
+           ============================================================================= */
+        @media (max-width: 1023px) {
+            :root {
+                --duration-normal: 0.4s;
+                --duration-micro: 0.22s;
+                --reveal-distance: 15px;
+            }
+        }
+
+        /* =============================================================================
+           MOBILE OVERRIDES: MOBILE (max-width: 768px)
+           ============================================================================= */
+        @media (max-width: 768px) {
+            :root {
+                --duration-normal: 0.35s;
+                --duration-micro: 0.2s;
+                --reveal-distance: 12px;
+                --card-padding: 1rem;
+                --icon-size: 40px;
+            }
+
+            .nav-dots {
+                display: none;
+            }
+
+            .slide {
+                padding: var(--space-xl) var(--space-lg);
+            }
+
+            .two-col,
+            .three-col,
+            .four-col {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .slide-footer {
+                flex-direction: column;
+                gap: var(--space-xs);
+                text-align: center;
+            }
+
+            .logo-container {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+
+            .logo-divider {
+                width: 40px;
+                height: 2px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+
+            .bg-blob {
+                width: 250px;
+                height: 250px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: var(--space-md);
+                font-size: var(--fs-sm);
+            }
+        }
+
+        /* =============================================================================
+           MOBILE OVERRIDES: SMALL PHONES (max-width: 480px)
+           ============================================================================= */
+        @media (max-width: 480px) {
+            :root {
+                --duration-normal: 0.3s;
+                --reveal-distance: 10px;
+            }
+
+            .slide {
+                padding: var(--space-lg);
+            }
+
+            .big-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <!-- SLIDE 1: TITLE -->
+    <section class="slide slide--title">
+        <div class="bg-blob bg-blob--cyan" style="top: -100px; right: -100px;"></div>
+        <div class="bg-blob bg-blob--orange" style="bottom: -150px; left: -100px;"></div>
+        <div class="slide-content">
+            <div class="logo-container reveal">
+                <img src="dogbnb-logo.png" alt="Dog BnB Houston" class="logo-img" style="height: 60px;">
+                <div class="logo-divider"></div>
+                <img src="poppy-logo-white.png" alt="Poppy Marketing" class="logo-img" style="height: 45px;">
+            </div>
+            <h1 class="reveal" style="margin-top: var(--space-2xl);">Executive Overview</h1>
+            <p class="subtitle reveal">A Strategic Partnership Proposal</p>
+            <p class="reveal" style="margin-top: var(--space-2xl); opacity: 0.6; font-size: var(--fs-sm);">Prepared for James Boswell<br>Dog BnB Houston</p>
+        </div>
+        <div class="slide-footer">
+            <span>Confidential</span>
+            <span>Poppy Marketing & Consulting</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: WHY THIS PARTNERSHIP -->
+    <section class="slide slide--cream">
+        <div class="slide-content">
+            <p class="eyebrow reveal">The Opportunity</p>
+            <h2 class="reveal">Why This <span class="accent">Partnership</span> Exists</h2>
+            <div class="card card--cyan reveal" style="margin-bottom: var(--space-2xl); text-align: center; padding: var(--space-2xl);">
+                <p style="font-size: var(--fs-xl);">Dog BnB Houston has <strong>strong care standards</strong> and an <strong>approachable brand</strong>.</p>
+                <p style="margin-top: var(--space-md); color: var(--text-muted);">The challenge isn't quality or pricing—it's <strong>visibility</strong> and <strong>discoverability</strong>.</p>
+            </div>
+            <h3 class="reveal" style="text-align: center; margin-bottom: var(--space-xl);">This Partnership Will:</h3>
+            <div class="three-col reveal">
+                <div class="card" style="text-align: center;">
+                    <div class="icon-circle" style="margin: 0 auto var(--space-md);"><i data-lucide="wrench" style="width: 24px; height: 24px;"></i></div>
+                    <h4>Repair</h4>
+                    <p style="font-size: var(--fs-sm); color: var(--text-muted);">Fix the digital foundation blocking discovery</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div class="icon-circle icon-circle--orange" style="margin: 0 auto var(--space-md);"><i data-lucide="search" style="width: 24px; height: 24px;"></i></div>
+                    <h4>Clarify</h4>
+                    <p style="font-size: var(--fs-sm); color: var(--text-muted);">Make the business understandable to Google & AI</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div class="icon-circle" style="margin: 0 auto var(--space-md);"><i data-lucide="trending-up" style="width: 24px; height: 24px;"></i></div>
+                    <h4>Grow</h4>
+                    <p style="font-size: var(--fs-sm); color: var(--text-muted);">Build a sustainable customer acquisition system</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: ENGAGEMENT STRUCTURE -->
+    <section class="slide slide--white">
+        <div class="slide-content">
+            <p class="eyebrow reveal">Partnership Model</p>
+            <h2 class="reveal">How the Engagement Is <span class="accent">Structured</span></h2>
+            <div class="three-col reveal" style="margin-bottom: var(--space-2xl);">
+                <div class="card card--cyan" style="text-align: center;">
+                    <p style="font-size: var(--fs-sm); color: var(--accent-cyan); font-weight: 600; margin-bottom: var(--space-sm);">DURATION</p>
+                    <p class="big-number">6</p>
+                    <p style="font-weight: 600;">Months</p>
+                    <p style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: var(--space-sm);">With continuation option</p>
+                </div>
+                <div class="card card--orange" style="text-align: center;">
+                    <p style="font-size: var(--fs-sm); color: var(--primary-orange); font-weight: 600; margin-bottom: var(--space-sm);">APPROACH</p>
+                    <p style="font-size: var(--fs-2xl); font-weight: 700; margin: var(--space-md) 0;">Foundation First</p>
+                    <p style="font-size: var(--fs-sm); color: var(--text-muted);">Ads second</p>
+                </div>
+                <div class="card" style="text-align: center; border: 2px solid var(--bg-dark);">
+                    <p style="font-size: var(--fs-sm); color: var(--text-muted); font-weight: 600; margin-bottom: var(--space-sm);">MODEL</p>
+                    <p style="font-size: var(--fs-2xl); font-weight: 700; margin: var(--space-md) 0;">Strategic Partner</p>
+                    <p style="font-size: var(--fs-sm); color: var(--text-muted);">Not vendor task execution</p>
+                </div>
+            </div>
+            <p class="reveal" style="text-align: center; font-size: var(--fs-lg); color: var(--text-muted);">This is a <strong>stabilization and growth partnership</strong>—not a redesign or rebrand.</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: PARTNERSHIP PHASES & INVESTMENT (CONSOLIDATED) -->
+    <section class="slide slide--white">
+        <div class="slide-content">
+            <p class="eyebrow reveal">6-Month Roadmap</p>
+            <h2 class="reveal">Partnership <span class="accent">Phases</span> & Investment</h2>
+
+            <!-- Three Phase Cards -->
+            <div class="three-col reveal" style="margin-bottom: var(--space-xl);">
+                <!-- Kickoff -->
+                <div class="card" style="border-top: 4px solid var(--accent-cyan);">
+                    <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                        <i data-lucide="rocket" style="width: 20px; height: 20px; color: var(--accent-cyan);"></i>
+                        <span style="font-size: var(--fs-sm); font-weight: 600; color: var(--accent-cyan);">MONTH 1</span>
+                    </div>
+                    <h4 style="font-size: var(--fs-lg); margin-bottom: var(--space-sm);">Kickoff & Stabilization</h4>
+                    <p style="font-size: var(--fs-2xl); font-weight: 700; color: var(--accent-cyan); margin-bottom: var(--space-sm);">$1,500</p>
+                    <p style="font-size: var(--fs-xs); color: var(--text-muted);">One-time</p>
+                    <ul style="margin-top: var(--space-md); font-size: var(--fs-xs); color: var(--text-muted); list-style: none;">
+                        <li>• Technical fixes & crawl access</li>
+                        <li>• Conversion tracking setup</li>
+                        <li>• Schema implementation</li>
+                    </ul>
+                </div>
+
+                <!-- Q1 -->
+                <div class="card" style="border-top: 4px solid var(--primary-orange);">
+                    <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                        <i data-lucide="building" style="width: 20px; height: 20px; color: var(--primary-orange);"></i>
+                        <span style="font-size: var(--fs-sm); font-weight: 600; color: var(--primary-orange);">MONTHS 1–3</span>
+                    </div>
+                    <h4 style="font-size: var(--fs-lg); margin-bottom: var(--space-sm);">Foundation & Trust</h4>
+                    <p style="font-size: var(--fs-2xl); font-weight: 700; color: var(--primary-orange); margin-bottom: var(--space-sm);">$850<span style="font-size: var(--fs-sm); font-weight: 400;">/mo</span></p>
+                    <p style="font-size: var(--fs-xs); color: var(--text-muted);">Ongoing</p>
+                    <ul style="margin-top: var(--space-md); font-size: var(--fs-xs); color: var(--text-muted); list-style: none;">
+                        <li>• AI Context & Agent pages</li>
+                        <li>• Review acquisition workflow</li>
+                        <li>• GBP alignment</li>
+                    </ul>
+                </div>
+
+                <!-- Q2 -->
+                <div class="card" style="border-top: 4px solid var(--accent-cyan);">
+                    <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+                        <i data-lucide="megaphone" style="width: 20px; height: 20px; color: var(--accent-cyan);"></i>
+                        <span style="font-size: var(--fs-sm); font-weight: 600; color: var(--accent-cyan);">MONTHS 4–6</span>
+                    </div>
+                    <h4 style="font-size: var(--fs-lg); margin-bottom: var(--space-sm);">Demand & Optimization</h4>
+                    <p style="font-size: var(--fs-2xl); font-weight: 700; color: var(--accent-cyan); margin-bottom: var(--space-sm);">$850<span style="font-size: var(--fs-sm); font-weight: 400;">/mo</span></p>
+                    <p style="font-size: var(--fs-xs); color: var(--text-muted);">Ongoing</p>
+                    <ul style="margin-top: var(--space-md); font-size: var(--fs-xs); color: var(--text-muted); list-style: none;">
+                        <li>• Google Ads relaunch</li>
+                        <li>• Local Service Ads</li>
+                        <li>• EaDo geo focus</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Investment Summary Row -->
+            <div class="reveal" style="display: flex; align-items: center; justify-content: center; gap: var(--space-2xl); flex-wrap: wrap; padding: var(--space-lg); background: var(--bg-dark); border-radius: var(--card-radius); color: var(--white);">
+                <div style="text-align: center;">
+                    <p style="font-size: var(--fs-xs); opacity: 0.7;">PROFESSIONAL FEES</p>
+                    <p style="font-size: var(--fs-2xl); font-weight: 700; color: var(--primary-orange);">$6,600</p>
+                    <p style="font-size: var(--fs-xs); opacity: 0.6;">over 6 months</p>
+                </div>
+                <div style="width: 1px; height: 50px; background: rgba(255,255,255,0.2);"></div>
+                <div style="text-align: center;">
+                    <p style="font-size: var(--fs-xs); opacity: 0.7;">AD SPEND (starts Mo. 2)</p>
+                    <p style="font-size: var(--fs-lg); font-weight: 600;">$600–$1,500<span style="font-size: var(--fs-xs); font-weight: 400;">/mo</span></p>
+                    <p style="font-size: var(--fs-xs); opacity: 0.6;">paid to Google</p>
+                </div>
+                <div style="width: 1px; height: 50px; background: rgba(255,255,255,0.2);"></div>
+                <div style="text-align: center;">
+                    <p style="font-size: var(--fs-xs); opacity: 0.7;">EXPECTED BOOKINGS</p>
+                    <p style="font-size: var(--fs-lg); font-weight: 600;">8–25<span style="font-size: var(--fs-xs); font-weight: 400;">/mo</span></p>
+                    <p style="font-size: var(--fs-xs); opacity: 0.6;">once optimized</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: PAYMENT OPTIONS -->
+    <section class="slide slide--cream">
+        <div class="slide-content">
+            <p class="eyebrow reveal">Flexibility</p>
+            <h2 class="reveal">Payment <span class="accent">Options</span></h2>
+            <div class="two-col reveal">
+                <div class="card">
+                    <h3><i data-lucide="calendar" style="width: 20px; height: 20px; color: var(--accent-cyan);"></i> Option 1: Monthly Ramp</h3>
+                    <p style="font-size: var(--fs-sm); color: var(--text-muted); margin-bottom: var(--space-lg);">Standard approach to ease cash flow</p>
+                    <ul class="feature-list">
+                        <li><i data-lucide="circle" style="width: 14px; height: 14px;"></i> 50% of Month 1 due at kickoff</li>
+                        <li><i data-lucide="circle" style="width: 14px; height: 14px;"></i> Month 2: Remaining 50% + full Month 2 fee</li>
+                        <li><i data-lucide="circle" style="width: 14px; height: 14px;"></i> Thereafter billed monthly</li>
+                    </ul>
+                </div>
+                <div class="card card--cyan">
+                    <h3><i data-lucide="credit-card" style="width: 20px; height: 20px; color: var(--accent-cyan);"></i> Option 2: Pay in Full</h3>
+                    <p style="font-size: var(--fs-sm); color: var(--text-muted); margin-bottom: var(--space-lg);">Simplifies administration</p>
+                    <ul class="feature-list">
+                        <li><i data-lucide="circle" style="width: 14px; height: 14px;"></i> Full professional fee paid upfront</li>
+                        <li><i data-lucide="circle" style="width: 14px; height: 14px;"></i> Same total investment</li>
+                        <li><i data-lucide="circle" style="width: 14px; height: 14px;"></i> One invoice, done</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="reveal" style="text-align: center; margin-top: var(--space-2xl); font-size: var(--fs-sm); color: var(--text-muted);">Both options result in the same total cost.</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: SUCCESS TIMELINE -->
+    <section class="slide slide--white">
+        <div class="slide-content">
+            <p class="eyebrow reveal">Expectations</p>
+            <h2 class="reveal">What Success <span class="accent">Looks Like</span></h2>
+            <p class="reveal" style="margin-bottom: var(--space-2xl); color: var(--text-muted);">Google Ads requires an initial optimization period. This is expected and necessary.</p>
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1-2</div>
+                    <div class="timeline-content">
+                        <h4>Learning & Signal Collection</h4>
+                        <p>Focus on data gathering. Early performance can show higher costs.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker timeline-marker--orange">3-4</div>
+                    <div class="timeline-content">
+                        <h4>Efficiency Improvements</h4>
+                        <p>Measurable optimization gains. Cost per booking starts decreasing.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">5-6</div>
+                    <div class="timeline-content">
+                        <h4>Stabilized Performance</h4>
+                        <p>Optimized, predictable results. Sustainable acquisition system in place.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card card--orange reveal" style="margin-top: var(--space-2xl);">
+                <p style="text-align: center;"><strong>Dog BnB Houston Advantage:</strong> Prior advertising history and existing brand recognition in EaDo may shorten the learning period.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: FAQ -->
+    <section class="slide slide--cream">
+        <div class="slide-content">
+            <p class="eyebrow reveal">Common Questions</p>
+            <h2 class="reveal">Frequently <span class="accent">Asked</span></h2>
+            <div class="two-col reveal">
+                <div>
+                    <div class="faq-item">
+                        <h4>Are you redesigning our website?</h4>
+                        <p>No. This focuses on technical health, structure, and performance—not visual redesign.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Why don't ads start immediately?</h4>
+                        <p>Launching ads before fixing crawl access, tracking, and structure leads to wasted spend. Month 1 prevents that.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What if ads don't perform?</h4>
+                        <p>Performance is reviewed monthly. Budgets can be adjusted or paused based on results.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="faq-item">
+                        <h4>How long before we see traction?</h4>
+                        <p>Foundational improvements occur in Month 1. Ads typically stabilize between Months 3–5.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Is this a long-term contract?</h4>
+                        <p>Initial term is 6 months. Continuation is optional and month-to-month.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Who pays Google Ads costs?</h4>
+                        <p>Ad spend is paid directly to Google. Poppy manages strategy and optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: NEXT STEPS -->
+    <section class="slide slide--title">
+        <div class="bg-blob bg-blob--cyan" style="bottom: -100px; right: -100px;"></div>
+        <div class="bg-blob bg-blob--orange" style="top: -100px; left: -100px;"></div>
+        <div class="slide-content" style="text-align: center;">
+            <p class="eyebrow reveal">Let's Begin</p>
+            <h2 class="reveal" style="color: var(--white); font-size: clamp(2rem, 5vw, 3rem);">Next Steps</h2>
+            <div class="reveal" style="display: flex; flex-direction: column; gap: var(--space-xl); max-width: 500px; margin: var(--space-2xl) auto 0; text-align: left;">
+                <div style="display: flex; align-items: center; gap: var(--space-lg);">
+                    <div class="icon-circle icon-circle--dark" style="width: 48px; height: 48px;"><span style="font-weight: 700;">1</span></div>
+                    <p>Review this proposal</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: var(--space-lg);">
+                    <div class="icon-circle icon-circle--dark" style="width: 48px; height: 48px;"><span style="font-weight: 700;">2</span></div>
+                    <p>Schedule a brief call to discuss questions</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: var(--space-lg);">
+                    <div class="icon-circle icon-circle--dark" style="width: 48px; height: 48px;"><span style="font-weight: 700;">3</span></div>
+                    <p>Sign agreement & submit kickoff payment</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: var(--space-lg);">
+                    <div class="icon-circle icon-circle--dark" style="width: 48px; height: 48px;"><span style="font-weight: 700;">4</span></div>
+                    <p>Begin Month 1 stabilization</p>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top: var(--space-3xl);">
+                <p style="opacity: 0.7; font-size: var(--fs-sm);">Prepared by</p>
+                <p style="font-weight: 700; font-size: var(--fs-xl);">Ricardo Gattas-Moras</p>
+                <p style="opacity: 0.8;">CEO, Poppy Marketing & Consulting</p>
+                <p style="margin-top: var(--space-lg); opacity: 0.6; font-size: var(--fs-sm);">ricardo@poppymarketingandconsulting.com | (941) 777-4933</p>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span>© 2026 Poppy Marketing</span>
+            <span>poppymarketingandconsulting.com</span>
+        </div>
+    </section>
+
+    <script>
+        /* =============================================================================
+           SLIDE PRESENTATION CONTROLLER
+           ============================================================================= */
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.currentSlide = 0;
+                this.totalSlides = this.slides.length;
+                this.init();
+            }
+
+            init() {
+                this.createNavDots();
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.setupWheelNav();
+                this.setupTouchNav();
+                this.updateProgressBar();
+                lucide.createIcons();
+            }
+
+            createNavDots() {
+                const nav = document.getElementById('navDots');
+                this.slides.forEach((slide, index) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'nav-dot';
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                    nav.appendChild(dot);
+                });
+                this.updateActiveDot();
+            }
+
+            setupIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            this.currentSlide = Array.from(this.slides).indexOf(entry.target);
+                            this.updateActiveDot();
+                            this.updateProgressBar();
+                        }
+                    });
+                }, { threshold: 0.5 });
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    if (['ArrowDown', 'ArrowRight', ' ', 'PageDown'].includes(e.key)) {
+                        e.preventDefault();
+                        this.nextSlide();
+                    } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) {
+                        e.preventDefault();
+                        this.prevSlide();
+                    }
+                });
+            }
+
+            setupWheelNav() {
+                let lastWheelTime = 0;
+                document.addEventListener('wheel', (e) => {
+                    if (Date.now() - lastWheelTime < 800) return;
+                    if (e.deltaY > 50) {
+                        this.nextSlide();
+                        lastWheelTime = Date.now();
+                    } else if (e.deltaY < -50) {
+                        this.prevSlide();
+                        lastWheelTime = Date.now();
+                    }
+                }, { passive: true });
+            }
+
+            setupTouchNav() {
+                let touchStartY = 0;
+                let touchStartX = 0;
+                document.addEventListener('touchstart', (e) => {
+                    touchStartY = e.touches[0].clientY;
+                    touchStartX = e.touches[0].clientX;
+                }, { passive: true });
+                document.addEventListener('touchend', (e) => {
+                    const diffY = touchStartY - e.changedTouches[0].clientY;
+                    const diffX = touchStartX - e.changedTouches[0].clientX;
+                    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 50) {
+                        diffY > 0 ? this.nextSlide() : this.prevSlide();
+                    }
+                }, { passive: true });
+            }
+
+            nextSlide() {
+                if (this.currentSlide < this.totalSlides - 1) this.goToSlide(this.currentSlide + 1);
+            }
+
+            prevSlide() {
+                if (this.currentSlide > 0) this.goToSlide(this.currentSlide - 1);
+            }
+
+            goToSlide(index) {
+                this.slides[index].scrollIntoView({ behavior: 'smooth' });
+            }
+
+            updateActiveDot() {
+                document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentSlide);
+                });
+            }
+
+            updateProgressBar() {
+                document.getElementById('progressBar').style.width =
+                    `${((this.currentSlide + 1) / this.totalSlides) * 100}%`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => new SlidePresentation());
+    </script>
+</body>
+</html>
